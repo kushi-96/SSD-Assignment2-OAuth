@@ -24,7 +24,7 @@ body{
 		margin-left:40%;
 	}
 
-	#fb-btn{
+	#fb-button{
 		margin-left:44%;
 	}
 	
@@ -32,29 +32,25 @@ body{
 		margin-top:-160px;
 	}
 	
-	#profile,loutbtn{
+	#profile,lgoutbtn{
 		display:none;
 	}
 	
-	#welcome{
-		margin-left:39%;
-	}
-
-	#welcome2{
+	#welcme{
 		margin-left:43.5%;
 	}	
-	#welcome3{
+	#welcomename{
 		margin-left:38.5%;
 		color:#2C14A4;
 	}
-	#cty{
+	#city{
 		margin-left:46.5%;
 	}
 	#email{
 		margin-left:42.5%;
 	}
 	
-	#loutbtn{
+	#lgoutbtn{
 		font-size:22px;
 	}
 	
@@ -155,7 +151,7 @@ span.psw {
 	}
 	
 	function testAPI(){
-		FB.api('/me?fields=name,email,picture.width(200).height(200),location',function(response){
+		FB.api('/me?fields=name,email,picture.width(200).height(200)',function(response){
 			if(response && !response.error){
 				console.log(response);
 				buildProfile(response);
@@ -175,9 +171,8 @@ span.psw {
 		</div>
 		<div>
 
-				<h2 id="welcome2"><b>WELCOME</b></h2><br/>
-				<h2 id="welcome3"><b>${user.name}</b></h2>
-				<h6 id="cty"><b>from ${user.location.name}</b></h6>
+				<h2 id="welcme"><b>WELCOME</b></h2><br/>
+				<h2 id="welcomename"><b>${user.name}</b></h2>
 				<h6 id="email"><b>${user.email}</b></h6>
 				<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 				<p>.</p>
@@ -192,15 +187,15 @@ span.psw {
 	function setElements(isLoggedIn) {
 		if(isLoggedIn){
 			document.getElementById('profile').style.display='block';
-			document.getElementById('loutbtn').style.display='block';
-			document.getElementById('fb-btn').style.display='none';
+			document.getElementById('lgoutbtn').style.display='block';
+			document.getElementById('fb-button').style.display='none';
 			document.getElementById('heading').style.display='none';
 			document.getElementById('imgppic').style.display='none';
 		}
 		else{
 			document.getElementById('profile').style.display='none';
-			document.getElementById('loutbtn').style.display='none';
-			document.getElementById('fb-btn').style.display='block';
+			document.getElementById('lgoutbtn').style.display='none';
+			document.getElementById('fb-button').style.display='block';
 			document.getElementById('heading').style.display='block';
 			document.getElementById('imgppic').style.display='block';
 		
@@ -217,9 +212,6 @@ span.psw {
 
  <nav class="navbar navbar-expand-md navbar-default" >
   <a class="navbar-brand" href="#" id="mainhead"><b>SSD-Social Login</b></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
@@ -227,7 +219,7 @@ span.psw {
     </ul>
 	
 	<ul class="navbar-nav navbar-right">
-      <li class="nav-item active" id="loutbtn">
+      <li class="nav-item active" id="lgoutbtn">
         <a href="#" onclick="logout()">Signout</a>
       </li>
     </ul>
@@ -251,9 +243,9 @@ span.psw {
 		
 		<div>
 			<fb:login-button
-				id="fb-btn"
+				id="fb-button"
 				size="xlarge"
-				scope="public_profile,email,user_location"
+				scope="public_profile,email"
 				onlogin="checkLoginState();">
 			</fb:login-button>
 		</div>
@@ -265,9 +257,6 @@ span.psw {
 <div id="profile">
 
 </div>
-
-
-
 
 </body>
 
